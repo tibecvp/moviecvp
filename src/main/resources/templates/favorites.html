@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>My Favorites</title>
+  </head>
+  <body>
+    <a href="/">Back to Home</a>
+    <h1>My Favorite Movies</h1>
+    <div th:each="fav : ${favorites}">
+      <h2 th:text="${fav.title}">Favorite Movie Title</h2>
+      <form th:action="@{/favorites/remove}" method="post">
+        <input type="hidden" name="movieId" th:value="${fav.id}">
+        <button type="submit">Remove from Favorites</button>
+      </form>
+    </div>
+  </body>
+</html>

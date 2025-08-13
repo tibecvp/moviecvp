@@ -1,4 +1,5 @@
 # Moviecvp App
+![Homepage screenshot](/screenshots/movies-list.png)
 ## Overview
 This is a Spring Boot web application that allows users to search for movies, view details, and manage a list of their favorite films. The app uses Thymeleaf for server-side rendering and leverages the TMDb (The Movie Database) API to fetch movie data.
 

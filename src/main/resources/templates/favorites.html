@@ -3,16 +3,33 @@
   <head>
     <meta charset="UTF-8">
     <title>My Favorites</title>
+    <link rel="icon" type="image/svg+xml" th:href="@{/logo.svg}">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles.css">
   </head>
   <body>
-    <a href="/">Back to Home</a>
-    <h1>My Favorite Movies</h1>
-    <div th:each="fav : ${favorites}">
-      <h2 th:text="${fav.title}">Favorite Movie Title</h2>
-      <form th:action="@{/favorites/remove}" method="post">
-        <input type="hidden" name="movieId" th:value="${fav.id}">
-        <button type="submit">Remove from Favorites</button>
-      </form>
+  <header>
+    <h1>
+      <img class="header-logo" th:src="@{/logo.svg}" alt="Moviecvp Logo"/>
+      Moviecvp
+    </h1>
+  </header>
+  <main>
+    <a class="btn-link" href="/">Back to Home</a>
+    <h2>My Favorite Movies</h2>
+    <div class="movies-container">
+      <div class="movie-card" th:each="fav : ${favorites}">
+        <a th:href="@{/movie/{id}(id=${fav.id})}">
+          <img th:src="@{'https://image.tmdb.org/t/p/w500/' + ${fav.posterPath}}" th:alt="@{${fav.title} + 'Movie poster'}" />
+        </a>
+        <h2 th:text="${fav.title}">Favorite Movie Title</h2>
+        <form th:action="@{/favorites/remove}" method="post">
+          <input type="hidden" name="movieId" th:value="${fav.id}">
+          <button class="btn-remove" type="submit">Remove Favorite</button>
+        </form>
+      </div>
     </div>
+  </main>
   </body>
 </html>

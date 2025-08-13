@@ -1,0 +1,194 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+    --hue: 47;
+    --tibe-color: hsl(47, 100%, 61%);
+    --first-color: hsl(var(--hue), 100%, 61%);
+    --first-color-alt: hsl(var(--hue), 100%, 72%);
+    --title-color: hsl(228, 8%, 95%);
+    --text-color: hsl(228, 8%, 65%);
+    --body-color: hsl(228, 15%, 20%);
+    --container-color: hsl(228, 15%, 15%);
+
+    /*========== Font and typography ==========*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: "Poppins", sans-serif;
+    --biggest-font-size: 2rem;
+    --bigger-font-size: 1.25rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: 0.938rem;
+    --small-font-size: 0.813rem;
+    --smaller-font-size: 0.75rem;
+    --designer-font-size: 0.6rem;
+
+    /*========== Font weight ==========*/
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semi-bold: 600;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: var(--body-color);
+    color: var(--text-color);
+    font-family: var(--body-font), sans-serif;
+    width: 100%;
+}
+
+header {
+    background: var(--container-color);
+    padding: 1rem 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1 {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.header-logo {
+    width: 40px;
+}
+
+header form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+}
+
+main {
+    padding: 1rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+input {
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    background: var(--body-color);
+    color: var(--body-font);
+    border: 0;
+    min-width: 250px;
+}
+
+button, button.btn-remove {
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    background: var(--tibe-color);
+    color: var(--container-color);
+    cursor: pointer;
+}
+
+button.btn-add {
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    color: var(--title-color);
+    background: transparent;
+    border: 1px solid var(--tibe-color);
+}
+
+button:hover {
+    font-weight: var(--font-semi-bold);
+}
+
+.btn-link {
+    border: 1px solid var(--tibe-color);
+    padding: .2rem 1rem;
+    border-radius: .5rem;
+    max-width: fit-content;
+}
+
+a {
+    color: var(--tibe-color);
+    text-decoration: none;
+}
+
+h1, h2, h3 {
+    color: var(--title-color);
+}
+
+.movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.movie-card {
+    background: var(--container-color);
+    border-radius: 1rem;
+    overflow: hidden;
+    width: 200px;
+    box-shadow: 0 0 20px var(--container-color);
+    padding-bottom: .5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-card img {
+    width: 100%;
+}
+
+.movie-card h2 {
+    font-size: var(--normal-font-size);
+    padding: .5rem;
+    flex-grow: 1;
+}
+
+.movie-card form {
+    padding: .5rem;
+}
+
+.movie-card form button {
+    width: 100%;
+}
+
+.details-container {
+    display: flex;
+    background: var(--container-color);
+    border-radius: 1rem;
+    overflow: hidden;
+    max-width: 700px;
+}
+
+.details-container img {
+    width: 300px;
+}
+
+.details-text {
+    padding: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.details-subtitle {
+    color: var(--title-color);
+}
+
+.details-rating {
+    color: var(--tibe-color);
+}
+
+@media screen and (max-width: 768px){
+    .details-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .details-container img {
+        border-radius: 1rem;
+    }
+}

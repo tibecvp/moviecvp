@@ -3,21 +3,47 @@
     <head>
         <meta charset="UTF-8">
         <title>Movie Catalogue</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/svg+xml" th:href="@{/logo.svg}">
+        <link rel="stylesheet" th:href="@{/styles.css}">
+        <link rel="stylesheet" href="../static/styles.css">
     </head>
     <body>
-        <h1>Movie Catalogue</h1>
-        <form action="/" method="get">
-            <input type="text" name="query" th:value="${query}" placeholder="Search for a movie...">
-            <button type="submit">Search</button>
-        </form>
-        <a href="/favorites">View Favorites</a>
-        <div th:each="movie : ${movies}">
-            <h2 th:text="${movie.title}">Movie Title</h2>
-            <a th:href="@{/movie/{id}(id=${movie.id})}">View Details</a>
-            <form th:action="@{/favorites/add}" method="post">
-                <input type="hidden" name="movieId" th:value="${movie.id}">
-                <button type="submit">Favorite</button>
+        <header>
+            <h1>
+                <img class="header-logo" th:src="@{/logo.svg}" alt="Moviecvp Logo"/>
+                Moviecvp
+            </h1>
+            <form action="/" method="get">
+                <label>
+                    <input type="text" name="query" th:value="${query}" placeholder="Search for a movie...">
+                </label>
+                <button type="submit">Search</button>
             </form>
-        </div>
+        </header>
+        <main>
+            <a class="btn-link" href="/favorites">View Favorites</a>
+            <h2>Movies Catalogue</h2>
+            <div class="movies-container">
+                <div class="movie-card" th:each="movie : ${movies}">
+                    <a th:href="@{/movie/{id}(id=${movie.id})}">
+                        <img th:src="@{'https://image.tmdb.org/t/p/w500/' + ${movie.posterPath}}" th:alt="@{${movie.title} + 'Movie poster'}" />
+                    </a>
+                    <h2 th:text="${movie.title}">Movie Title</h2>
+                    <div th:if="${favoriteIds.contains(movie.id)}">
+                        <form th:action="@{/favorites/remove}" method="post">
+                            <input type="hidden" name="movieId" th:value="${movie.id}">
+                            <button class="btn-remove" type="submit">Remove Favorite</button>
+                        </form>
+                    </div>
+                    <div th:unless="${favoriteIds.contains(movie.id)}">
+                        <form th:action="@{/favorites/add}" method="post">
+                            <input type="hidden" name="movieId" th:value="${movie.id}">
+                            <button class="btn-add" type="submit">Add Favorite</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
     </body>
 </html>

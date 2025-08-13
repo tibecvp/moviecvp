@@ -1,6 +1,7 @@
 package com.moviecvp.service;
 
 import com.moviecvp.model.Movie;
+import com.moviecvp.model.MovieApiResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -25,15 +26,14 @@ public class MovieService {
 
     public List<Movie> getTrendingMovies() {
         String url = apiUrl + "/trending/movie/week?api_key=" + apiKey;
-        System.out.println("DEBUG: The URL being requested is : " + url);
-        Map<String, Object> response = restTemplate.getForObject(url, Map.class);
-        return (List<Movie>) response.get("results");
+        MovieApiResponse response = restTemplate.getForObject(url, MovieApiResponse.class);
+        return response.getResults();
     }
 
     public List<Movie> searchMovies(String query) {
         String url = apiUrl + "/search/movie?api_key=" + apiKey + "&query=" + query;
-        Map<String, Object> response = restTemplate.getForObject(url, Map.class);
-        return (List<Movie>) response.get("results");
+        MovieApiResponse response = restTemplate.getForObject(url, MovieApiResponse.class);
+        return response.getResults();
     }
 
     public Movie getMovieById(Long id) {
